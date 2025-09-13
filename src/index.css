@@ -15,32 +15,33 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 15%;
 
-    /* Orange to Purple Brand Colors */
-    --primary: 30 100% 60%; /* Vibrant Orange */
+    /* Violet-focused Brand Colors */
+    --primary: 280 100% 65%; /* Vibrant Violet */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 100% 70%; /* Vibrant Purple */
+    --secondary: 30 100% 60%; /* Vibrant Orange */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 5% 96%;
     --muted-foreground: 240 4% 46%;
 
-    --accent: 320 100% 85%; /* Light Pink accent */
-    --accent-foreground: 320 50% 20%;
+    --accent: 270 100% 80%; /* Light Violet accent */
+    --accent-foreground: 270 50% 20%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 30 100% 60%;
+    --ring: 280 100% 65%;
 
     --radius: 1rem;
 
-    /* Brand Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(30 100% 60%), hsl(280 100% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(30 100% 60%), hsl(320 100% 70%), hsl(280 100% 70%));
+    /* Violet-focused Brand Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280 100% 65%), hsl(260 100% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(30 100% 65%) 0%, hsl(320 100% 75%) 50%, hsl(280 100% 70%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 20% 98%));
+    --gradient-wave: linear-gradient(135deg, hsl(260 100% 70%) 0%, hsl(280 100% 75%) 50%, hsl(300 100% 80%) 100%);
     
     /* Shadows */
     --shadow-brand: 0 10px 30px -5px hsl(280 100% 70% / 0.3);

@@ -62,6 +62,7 @@ export default {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-card': 'var(--gradient-card)',
+        'gradient-wave': 'var(--gradient-wave)',
       },
       boxShadow: {
         'brand': 'var(--shadow-brand)',
