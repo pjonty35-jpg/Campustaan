@@ -1,0 +1,119 @@
+import { Calendar, MapPin, Users } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+const EventsSection = () => {
+  const events = [
+    {
+      id: 1,
+      title: "Mestics",
+      subtitle: "Annual Cultural Festival",
+      date: "Dec 15-17",
+      time: "10:00 AM",
+      location: "Main Auditorium",
+      attendees: "500+",
+      category: "Cultural",
+      bgColor: "bg-gradient-to-br from-purple-500 to-pink-500"
+    },
+    {
+      id: 2,
+      title: "Coming Together",
+      subtitle: "Freshers Welcome Event",
+      date: "Dec 20",
+      time: "6:00 PM",
+      location: "Campus Grounds",
+      attendees: "300+",
+      category: "Social",
+      bgColor: "bg-gradient-to-br from-blue-500 to-cyan-500"
+    },
+    {
+      id: 3,
+      title: "Engraging Doterns",
+      subtitle: "Technical Workshop Series",
+      date: "Dec 22-23",
+      time: "2:00 PM",
+      location: "Computer Lab",
+      attendees: "150+",
+      category: "Technical",
+      bgColor: "bg-gradient-to-br from-orange-500 to-red-500"
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-muted/30">
+      <div className="container px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+            Upcoming Events
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Don't miss out on the exciting events happening on campus
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {events.map((event) => (
+            <Card key={event.id} className="group overflow-hidden border-0 hover:shadow-brand transition-all duration-300">
+              <div className={`h-40 ${event.bgColor} relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute top-4 left-4">
+                  <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                    {event.category}
+                  </Badge>
+                </div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  <h3 className="text-xl font-bold mb-1">{event.title}</h3>
+                  <p className="text-white/90 text-sm">{event.subtitle}</p>
+                </div>
+              </div>
+              
+              <CardContent className="p-6 bg-gradient-card">
+                <div className="space-y-3">
+                  <div className="flex items-center text-muted-foreground text-sm">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    {event.date} at {event.time}
+                  </div>
+                  
+                  <div className="flex items-center text-muted-foreground text-sm">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    {event.location}
+                  </div>
+                  
+                  <div className="flex items-center text-muted-foreground text-sm">
+                    <Users className="h-4 w-4 mr-2" />
+                    {event.attendees} interested
+                  </div>
+                </div>
+
+                <div className="flex gap-2 mt-6">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
+                  >
+                    Learn More
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    className="flex-1 bg-gradient-primary hover:opacity-90 text-white border-0"
+                  >
+                    Register
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+            Browse All Events
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default EventsSection;

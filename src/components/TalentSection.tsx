@@ -1,0 +1,131 @@
+import { Play, Star, Eye } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+const TalentSection = () => {
+  const talents = [
+    {
+      id: 1,
+      name: "Priya Sharma",
+      talent: "Digital Art",
+      avatar: "/placeholder.svg",
+      preview: "bg-gradient-to-br from-pink-400 to-purple-600",
+      views: "2.3k",
+      likes: 156,
+      category: "Art"
+    },
+    {
+      id: 2,
+      name: "Arjun Patel",
+      talent: "Music Production",
+      avatar: "/placeholder.svg",
+      preview: "bg-gradient-to-br from-blue-400 to-cyan-600",
+      views: "1.8k",
+      likes: 203,
+      category: "Music"
+    },
+    {
+      id: 3,
+      name: "Sneha Gupta",
+      talent: "Photography",
+      avatar: "/placeholder.svg",
+      preview: "bg-gradient-to-br from-green-400 to-blue-600",
+      views: "3.1k",
+      likes: 289,
+      category: "Photography"
+    },
+    {
+      id: 4,
+      name: "Rahul Kumar",
+      talent: "Dance Performance",
+      avatar: "/placeholder.svg",
+      preview: "bg-gradient-to-br from-orange-400 to-red-600",
+      views: "4.2k",
+      likes: 467,
+      category: "Dance"
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-background">
+      <div className="container px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+            Talent Spotlights
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Discover amazing talents from our campus community
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {talents.map((talent) => (
+            <Card key={talent.id} className="group overflow-hidden border-0 hover:shadow-brand transition-all duration-300">
+              <div className={`aspect-square ${talent.preview} relative overflow-hidden cursor-pointer`}>
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <Button size="lg" variant="ghost" className="text-white hover:bg-white/20">
+                    <Play className="h-8 w-8 fill-current" />
+                  </Button>
+                </div>
+                
+                {/* View Count */}
+                <div className="absolute top-3 right-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                  <Eye className="h-3 w-3 mr-1" />
+                  {talent.views}
+                </div>
+
+                {/* Category Badge */}
+                <div className="absolute top-3 left-3 bg-white/20 text-white text-xs px-2 py-1 rounded-full">
+                  {talent.category}
+                </div>
+              </div>
+              
+              <CardContent className="p-4 bg-gradient-card">
+                <div className="flex items-center space-x-3 mb-3">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={talent.avatar} alt={talent.name} />
+                    <AvatarFallback className="bg-gradient-primary text-white text-sm">
+                      {talent.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-semibold text-sm text-foreground truncate">
+                      {talent.name}
+                    </h4>
+                    <p className="text-muted-foreground text-xs truncate">
+                      {talent.talent}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-muted-foreground text-sm">
+                    <Star className="h-4 w-4 mr-1 fill-current text-yellow-500" />
+                    {talent.likes}
+                  </div>
+                  
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-primary hover:bg-primary hover:text-white p-2 h-auto"
+                  >
+                    Follow
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+            Explore All Talents
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TalentSection;
