@@ -4,23 +4,8 @@ import campustaanLogo from "@/assets/campustaan-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-primary text-white relative overflow-hidden">
-      {/* Floating orbs */}
-      <div className="absolute top-8 left-20 w-20 h-20 bg-gradient-wave rounded-full opacity-15 blur-lg animate-pulse delay-400"></div>
-      <div className="absolute bottom-12 right-16 w-24 h-24 bg-white/10 rounded-full opacity-18 blur-xl animate-pulse delay-1200"></div>
-      <div className="absolute top-1/2 right-1/4 w-18 h-18 bg-gradient-wave rounded-full opacity-25 blur-lg animate-pulse delay-700"></div>
-      
-      {/* More vibrant orbs */}
-      <div className="absolute top-16 left-12 w-16 h-16 bg-cyan-400 rounded-full opacity-20 blur-lg animate-pulse delay-300"></div>
-      <div className="absolute bottom-20 right-20 w-22 h-22 bg-lime-400 rounded-full opacity-25 blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute top-24 left-1/3 w-18 h-18 bg-yellow-400 rounded-full opacity-30 blur-lg animate-pulse delay-600"></div>
-      <div className="absolute bottom-8 left-8 w-20 h-20 bg-pink-400 rounded-full opacity-22 blur-xl animate-pulse delay-1300"></div>
-      <div className="absolute top-1/3 right-12 w-14 h-14 bg-emerald-400 rounded-full opacity-28 blur-lg animate-pulse delay-500"></div>
-      <div className="absolute bottom-1/3 left-16 w-26 h-26 bg-orange-400 rounded-full opacity-18 blur-2xl animate-pulse delay-900"></div>
-      <div className="absolute top-32 right-8 w-16 h-16 bg-purple-400 rounded-full opacity-25 blur-lg animate-pulse delay-750"></div>
-      <div className="absolute bottom-32 left-24 w-24 h-24 bg-blue-400 rounded-full opacity-20 blur-xl animate-pulse delay-1100"></div>
-      
-      <div className="container px-4 py-12 relative z-10">
+    <footer className="bg-gradient-primary text-white">
+      <div className="container px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">

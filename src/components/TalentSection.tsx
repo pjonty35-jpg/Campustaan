@@ -69,6 +69,18 @@ const TalentSection = () => {
       <div className="absolute top-1/3 right-20 w-18 h-18 bg-indigo-400 rounded-full opacity-28 blur-lg animate-pulse delay-750"></div>
       <div className="absolute bottom-1/3 left-8 w-20 h-20 bg-amber-400 rounded-full opacity-24 blur-lg animate-pulse delay-1050"></div>
       
+      {/* Cover all remaining white spaces */}
+      <div className="absolute top-4 left-4 w-12 h-12 bg-violet-400 rounded-full opacity-30 blur-lg animate-pulse delay-150"></div>
+      <div className="absolute bottom-4 right-4 w-16 h-16 bg-fuchsia-400 rounded-full opacity-28 blur-lg animate-pulse delay-1450"></div>
+      <div className="absolute top-28 left-1/5 w-18 h-18 bg-sky-400 rounded-full opacity-32 blur-lg animate-pulse delay-550"></div>
+      <div className="absolute bottom-28 right-1/5 w-22 h-22 bg-lime-300 rounded-full opacity-25 blur-xl animate-pulse delay-1250"></div>
+      <div className="absolute top-36 left-2/3 w-14 h-14 bg-pink-300 rounded-full opacity-35 blur-lg animate-pulse delay-450"></div>
+      <div className="absolute bottom-36 right-2/3 w-26 h-26 bg-cyan-300 rounded-full opacity-20 blur-xl animate-pulse delay-850"></div>
+      <div className="absolute top-44 left-1/5 w-20 h-20 bg-yellow-300 rounded-full opacity-30 blur-lg animate-pulse delay-750"></div>
+      <div className="absolute bottom-44 right-2/5 w-24 h-24 bg-orange-300 rounded-full opacity-22 blur-xl animate-pulse delay-1150"></div>
+      <div className="absolute top-16 left-2/5 w-16 h-16 bg-purple-300 rounded-full opacity-33 blur-lg animate-pulse delay-250"></div>
+      <div className="absolute bottom-20 right-3/5 w-18 h-18 bg-emerald-300 rounded-full opacity-28 blur-lg animate-pulse delay-650"></div>
+      
       <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
