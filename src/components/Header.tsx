@@ -5,7 +5,7 @@ import campustaanLogo from "@/assets/campustaan-logo.png";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
+    <header className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo and Brand */}
         <div className="flex items-center space-x-3">
