@@ -28,6 +28,13 @@ const HeroSection = () => {
       <div className="absolute top-1/3 right-20 w-26 h-26 bg-gradient-wave rounded-full opacity-35 blur-xl animate-pulse delay-600"></div>
       <div className="absolute bottom-1/3 right-8 w-30 h-30 bg-gradient-primary rounded-full opacity-30 blur-2xl animate-pulse delay-900"></div>
       
+      {/* More vibrant colors */}
+      <div className="absolute top-12 left-1/2 w-22 h-22 bg-cyan-400 rounded-full opacity-25 blur-xl animate-pulse delay-400"></div>
+      <div className="absolute bottom-24 left-8 w-26 h-26 bg-lime-400 rounded-full opacity-30 blur-lg animate-pulse delay-1100"></div>
+      <div className="absolute top-40 right-12 w-18 h-18 bg-yellow-400 rounded-full opacity-35 blur-lg animate-pulse delay-650"></div>
+      <div className="absolute bottom-40 right-1/4 w-32 h-32 bg-pink-400 rounded-full opacity-20 blur-2xl animate-pulse delay-1300"></div>
+      <div className="absolute top-60 left-20 w-24 h-24 bg-emerald-400 rounded-full opacity-28 blur-xl animate-pulse delay-850"></div>
+      
       {/* Graduation Cap Icon */}
       <div className="absolute top-12 right-20 text-white/40">
         <GraduationCap className="h-28 w-28" />

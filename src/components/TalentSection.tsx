@@ -55,6 +55,20 @@ const TalentSection = () => {
       <div className="absolute top-1/2 left-8 w-24 h-24 bg-white/12 rounded-full opacity-35 blur-lg animate-pulse delay-800"></div>
       <div className="absolute bottom-1/4 right-12 w-28 h-28 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse delay-300"></div>
       
+      {/* More vibrant orbs */}
+      <div className="absolute top-8 left-20 w-18 h-18 bg-cyan-400 rounded-full opacity-28 blur-lg animate-pulse delay-200"></div>
+      <div className="absolute bottom-8 right-24 w-30 h-30 bg-lime-400 rounded-full opacity-25 blur-xl animate-pulse delay-1200"></div>
+      <div className="absolute top-20 right-8 w-20 h-20 bg-yellow-400 rounded-full opacity-32 blur-lg animate-pulse delay-700"></div>
+      <div className="absolute bottom-24 left-12 w-22 h-22 bg-pink-400 rounded-full opacity-20 blur-xl animate-pulse delay-1400"></div>
+      <div className="absolute top-32 left-1/3 w-16 h-16 bg-emerald-400 rounded-full opacity-30 blur-lg animate-pulse delay-400"></div>
+      <div className="absolute bottom-32 right-1/4 w-32 h-32 bg-orange-400 rounded-full opacity-18 blur-2xl animate-pulse delay-900"></div>
+      <div className="absolute top-40 right-16 w-14 h-14 bg-purple-400 rounded-full opacity-35 blur-lg animate-pulse delay-600"></div>
+      <div className="absolute bottom-40 left-24 w-28 h-28 bg-blue-400 rounded-full opacity-22 blur-xl animate-pulse delay-1100"></div>
+      <div className="absolute top-12 left-1/4 w-24 h-24 bg-rose-400 rounded-full opacity-25 blur-lg animate-pulse delay-350"></div>
+      <div className="absolute bottom-12 right-1/3 w-26 h-26 bg-teal-400 rounded-full opacity-20 blur-xl animate-pulse delay-1300"></div>
+      <div className="absolute top-1/3 right-20 w-18 h-18 bg-indigo-400 rounded-full opacity-28 blur-lg animate-pulse delay-750"></div>
+      <div className="absolute bottom-1/3 left-8 w-20 h-20 bg-amber-400 rounded-full opacity-24 blur-lg animate-pulse delay-1050"></div>
+      
       <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">

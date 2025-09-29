@@ -44,6 +44,18 @@ const NewsSection = () => {
       <div className="absolute bottom-32 left-20 w-32 h-32 bg-gradient-wave rounded-full opacity-15 blur-2xl animate-pulse delay-1100"></div>
       <div className="absolute top-1/2 right-8 w-20 h-20 bg-white/10 rounded-full opacity-30 blur-lg animate-pulse delay-700"></div>
       
+      {/* More vibrant orbs */}
+      <div className="absolute top-8 left-12 w-18 h-18 bg-cyan-400 rounded-full opacity-25 blur-lg animate-pulse delay-300"></div>
+      <div className="absolute bottom-16 right-1/3 w-28 h-28 bg-lime-400 rounded-full opacity-20 blur-xl animate-pulse delay-900"></div>
+      <div className="absolute top-32 left-1/4 w-22 h-22 bg-yellow-400 rounded-full opacity-30 blur-lg animate-pulse delay-1200"></div>
+      <div className="absolute bottom-8 left-8 w-26 h-26 bg-pink-400 rounded-full opacity-18 blur-xl animate-pulse delay-600"></div>
+      <div className="absolute top-1/3 right-24 w-20 h-20 bg-emerald-400 rounded-full opacity-22 blur-lg animate-pulse delay-1400"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-orange-400 rounded-full opacity-25 blur-xl animate-pulse delay-800"></div>
+      <div className="absolute top-12 right-12 w-16 h-16 bg-purple-400 rounded-full opacity-28 blur-lg animate-pulse delay-500"></div>
+      <div className="absolute bottom-20 right-8 w-30 h-30 bg-blue-400 rounded-full opacity-20 blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-40 left-16 w-14 h-14 bg-rose-400 rounded-full opacity-32 blur-lg animate-pulse delay-350"></div>
+      <div className="absolute bottom-40 right-20 w-34 h-34 bg-teal-400 rounded-full opacity-15 blur-2xl animate-pulse delay-1350"></div>
+      
       <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
