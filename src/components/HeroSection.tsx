@@ -19,6 +19,15 @@ const HeroSection = () => {
       <div className="absolute top-32 right-1/3 w-20 h-20 bg-white/30 rounded-full blur-lg animate-pulse delay-500"></div>
       <div className="absolute bottom-16 left-1/4 w-32 h-32 bg-gradient-wave rounded-full opacity-30 blur-xl animate-pulse delay-700"></div>
       
+      {/* Additional smoky lights */}
+      <div className="absolute top-8 right-8 w-16 h-16 bg-gradient-primary rounded-full opacity-50 blur-lg animate-pulse delay-200"></div>
+      <div className="absolute top-1/2 left-12 w-28 h-28 bg-white/20 rounded-full opacity-40 blur-2xl animate-pulse delay-1200"></div>
+      <div className="absolute bottom-8 right-1/3 w-36 h-36 bg-gradient-wave rounded-full opacity-25 blur-2xl animate-pulse delay-800"></div>
+      <div className="absolute top-20 left-1/3 w-22 h-22 bg-gradient-primary rounded-full opacity-60 blur-xl animate-pulse delay-300"></div>
+      <div className="absolute bottom-20 left-16 w-18 h-18 bg-white/40 rounded-full opacity-50 blur-lg animate-pulse delay-1500"></div>
+      <div className="absolute top-1/3 right-20 w-26 h-26 bg-gradient-wave rounded-full opacity-35 blur-xl animate-pulse delay-600"></div>
+      <div className="absolute bottom-1/3 right-8 w-30 h-30 bg-gradient-primary rounded-full opacity-30 blur-2xl animate-pulse delay-900"></div>
+      
       {/* Graduation Cap Icon */}
       <div className="absolute top-12 right-20 text-white/40">
         <GraduationCap className="h-28 w-28" />

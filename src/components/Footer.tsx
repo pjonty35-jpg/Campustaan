@@ -4,8 +4,13 @@ import campustaanLogo from "@/assets/campustaan-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-primary text-white">
-      <div className="container px-4 py-12">
+    <footer className="bg-gradient-primary text-white relative overflow-hidden">
+      {/* Floating orbs */}
+      <div className="absolute top-8 left-20 w-20 h-20 bg-gradient-wave rounded-full opacity-15 blur-lg animate-pulse delay-400"></div>
+      <div className="absolute bottom-12 right-16 w-24 h-24 bg-white/10 rounded-full opacity-18 blur-xl animate-pulse delay-1200"></div>
+      <div className="absolute top-1/2 right-1/4 w-18 h-18 bg-gradient-wave rounded-full opacity-25 blur-lg animate-pulse delay-700"></div>
+      
+      <div className="container px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">

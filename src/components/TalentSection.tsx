@@ -48,8 +48,14 @@ const TalentSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container px-4">
+    <section className="py-16 bg-background relative overflow-hidden">
+      {/* Floating orbs */}
+      <div className="absolute top-24 right-20 w-26 h-26 bg-gradient-primary rounded-full opacity-22 blur-xl animate-pulse delay-500"></div>
+      <div className="absolute bottom-16 left-16 w-34 h-34 bg-gradient-wave rounded-full opacity-18 blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-8 w-24 h-24 bg-white/12 rounded-full opacity-35 blur-lg animate-pulse delay-800"></div>
+      <div className="absolute bottom-1/4 right-12 w-28 h-28 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse delay-300"></div>
+      
+      <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
             Talent Spotlights

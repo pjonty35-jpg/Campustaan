@@ -38,8 +38,13 @@ const NewsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container px-4">
+    <section className="py-16 bg-background relative overflow-hidden">
+      {/* Floating orbs */}
+      <div className="absolute top-20 right-16 w-24 h-24 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse delay-400"></div>
+      <div className="absolute bottom-32 left-20 w-32 h-32 bg-gradient-wave rounded-full opacity-15 blur-2xl animate-pulse delay-1100"></div>
+      <div className="absolute top-1/2 right-8 w-20 h-20 bg-white/10 rounded-full opacity-30 blur-lg animate-pulse delay-700"></div>
+      
+      <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
             Latest Campus News

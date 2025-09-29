@@ -41,8 +41,14 @@ const EventsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container px-4">
+    <section className="py-16 bg-muted/30 relative overflow-hidden">
+      {/* Floating orbs */}
+      <div className="absolute top-16 left-12 w-28 h-28 bg-gradient-wave rounded-full opacity-25 blur-xl animate-pulse delay-600"></div>
+      <div className="absolute bottom-20 right-24 w-36 h-36 bg-gradient-primary rounded-full opacity-20 blur-2xl animate-pulse delay-1300"></div>
+      <div className="absolute top-1/3 left-1/4 w-22 h-22 bg-white/15 rounded-full opacity-40 blur-lg animate-pulse delay-200"></div>
+      <div className="absolute bottom-1/3 right-1/3 w-30 h-30 bg-gradient-wave rounded-full opacity-18 blur-xl animate-pulse delay-900"></div>
+      
+      <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
             Upcoming Events
