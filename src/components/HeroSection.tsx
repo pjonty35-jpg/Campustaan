@@ -1,12 +1,17 @@
 import { Search, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import backgroundImage from "@/assets/campustaan-background.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero min-h-[600px] flex items-center">
-      {/* Main gradient background */}
-      <div className="absolute inset-0 bg-gradient-hero"></div>
+    <section className="relative overflow-hidden min-h-[600px] flex items-center">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      ></div>
+      <div className="absolute inset-0 bg-black/40"></div>
       
       {/* Decorative floating orbs */}
       <div className="absolute top-16 left-8 w-24 h-24 bg-gradient-wave rounded-full opacity-60 blur-xl animate-pulse"></div>
