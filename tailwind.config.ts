@@ -94,45 +94,10 @@ export default {
             height: "0",
           },
         },
-        "morph-heart": {
-          "0%, 100%": {
-            borderRadius: "50%",
-            transform: "scale(1) rotate(0deg)",
-          },
-          "50%": {
-            borderRadius: "50% 50% 0 0",
-            transform: "scale(1.1) rotate(-45deg)",
-          },
-        },
-        "morph-diamond": {
-          "0%, 100%": {
-            borderRadius: "50%",
-            transform: "scale(1) rotate(0deg)",
-          },
-          "50%": {
-            borderRadius: "0%",
-            transform: "scale(1.15) rotate(45deg)",
-          },
-        },
-        "morph-butterfly": {
-          "0%, 100%": {
-            borderRadius: "50%",
-            transform: "scale(1) rotate(0deg)",
-            clipPath: "circle(50% at 50% 50%)",
-          },
-          "50%": {
-            borderRadius: "50% 0 50% 0",
-            transform: "scale(1.2) rotate(15deg)",
-            clipPath: "ellipse(60% 40% at 50% 50%)",
-          },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "morph-heart": "morph-heart 4s ease-in-out infinite",
-        "morph-diamond": "morph-diamond 5s ease-in-out infinite",
-        "morph-butterfly": "morph-butterfly 6s ease-in-out infinite",
       },
     },
   },

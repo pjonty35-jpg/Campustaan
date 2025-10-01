@@ -40,31 +40,31 @@ const NewsSection = () => {
   return (
     <section className="py-16 bg-background relative overflow-hidden">
       {/* Floating orbs with glows */}
-      <div className="absolute top-20 right-16 w-24 h-24 bg-gradient-primary rounded-full opacity-20 blur-xl animate-morph-heart shadow-[0_0_60px_22px_rgba(249,115,22,0.35)]"></div>
-      <div className="absolute bottom-32 left-20 w-32 h-32 bg-gradient-wave rounded-full opacity-15 blur-2xl animate-morph-diamond shadow-[0_0_70px_26px_rgba(168,85,247,0.3)]"></div>
-      <div className="absolute top-1/2 right-8 w-20 h-20 bg-white/10 rounded-full opacity-30 blur-lg animate-morph-butterfly shadow-[0_0_52px_19px_rgba(255,255,255,0.25)]"></div>
+      <div className="absolute top-20 right-16 w-24 h-24 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse delay-400 shadow-[0_0_60px_22px_rgba(249,115,22,0.35)]"></div>
+      <div className="absolute bottom-32 left-20 w-32 h-32 bg-gradient-wave rounded-full opacity-15 blur-2xl animate-pulse delay-1100 shadow-[0_0_70px_26px_rgba(168,85,247,0.3)]"></div>
+      <div className="absolute top-1/2 right-8 w-20 h-20 bg-white/10 rounded-full opacity-30 blur-lg animate-pulse delay-700 shadow-[0_0_52px_19px_rgba(255,255,255,0.25)]"></div>
       
       {/* More vibrant orbs with glows */}
-      <div className="absolute top-8 left-12 w-18 h-18 bg-cyan-400 rounded-full opacity-25 blur-lg animate-morph-heart shadow-[0_0_50px_18px_rgba(34,211,238,0.38)]"></div>
-      <div className="absolute bottom-16 right-1/3 w-28 h-28 bg-lime-400 rounded-full opacity-20 blur-xl animate-morph-butterfly shadow-[0_0_62px_23px_rgba(163,230,53,0.34)]"></div>
-      <div className="absolute top-32 left-1/4 w-22 h-22 bg-yellow-400 rounded-full opacity-30 blur-lg animate-morph-diamond shadow-[0_0_55px_20px_rgba(250,204,21,0.42)]"></div>
-      <div className="absolute bottom-8 left-8 w-26 h-26 bg-pink-400 rounded-full opacity-18 blur-xl animate-morph-heart shadow-[0_0_58px_21px_rgba(244,114,182,0.32)]"></div>
-      <div className="absolute top-1/3 right-24 w-20 h-20 bg-emerald-400 rounded-full opacity-22 blur-lg animate-morph-butterfly shadow-[0_0_52px_19px_rgba(52,211,153,0.36)]"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-orange-400 rounded-full opacity-25 blur-xl animate-morph-diamond shadow-[0_0_60px_22px_rgba(251,146,60,0.38)]"></div>
-      <div className="absolute top-12 right-12 w-16 h-16 bg-purple-400 rounded-full opacity-28 blur-lg animate-morph-heart shadow-[0_0_48px_18px_rgba(192,132,252,0.4)]"></div>
-      <div className="absolute bottom-20 right-8 w-30 h-30 bg-blue-400 rounded-full opacity-20 blur-2xl animate-morph-butterfly shadow-[0_0_65px_24px_rgba(96,165,250,0.34)]"></div>
-      <div className="absolute top-40 left-16 w-14 h-14 bg-rose-400 rounded-full opacity-32 blur-lg animate-morph-diamond shadow-[0_0_45px_16px_rgba(251,113,133,0.44)]"></div>
-      <div className="absolute bottom-40 right-20 w-34 h-34 bg-teal-400 rounded-full opacity-15 blur-2xl animate-morph-heart shadow-[0_0_72px_27px_rgba(45,212,191,0.3)]"></div>
+      <div className="absolute top-8 left-12 w-18 h-18 bg-cyan-400 rounded-full opacity-25 blur-lg animate-pulse delay-300 shadow-[0_0_50px_18px_rgba(34,211,238,0.38)]"></div>
+      <div className="absolute bottom-16 right-1/3 w-28 h-28 bg-lime-400 rounded-full opacity-20 blur-xl animate-pulse delay-900 shadow-[0_0_62px_23px_rgba(163,230,53,0.34)]"></div>
+      <div className="absolute top-32 left-1/4 w-22 h-22 bg-yellow-400 rounded-full opacity-30 blur-lg animate-pulse delay-1200 shadow-[0_0_55px_20px_rgba(250,204,21,0.42)]"></div>
+      <div className="absolute bottom-8 left-8 w-26 h-26 bg-pink-400 rounded-full opacity-18 blur-xl animate-pulse delay-600 shadow-[0_0_58px_21px_rgba(244,114,182,0.32)]"></div>
+      <div className="absolute top-1/3 right-24 w-20 h-20 bg-emerald-400 rounded-full opacity-22 blur-lg animate-pulse delay-1400 shadow-[0_0_52px_19px_rgba(52,211,153,0.36)]"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-orange-400 rounded-full opacity-25 blur-xl animate-pulse delay-800 shadow-[0_0_60px_22px_rgba(251,146,60,0.38)]"></div>
+      <div className="absolute top-12 right-12 w-16 h-16 bg-purple-400 rounded-full opacity-28 blur-lg animate-pulse delay-500 shadow-[0_0_48px_18px_rgba(192,132,252,0.4)]"></div>
+      <div className="absolute bottom-20 right-8 w-30 h-30 bg-blue-400 rounded-full opacity-20 blur-2xl animate-pulse delay-1000 shadow-[0_0_65px_24px_rgba(96,165,250,0.34)]"></div>
+      <div className="absolute top-40 left-16 w-14 h-14 bg-rose-400 rounded-full opacity-32 blur-lg animate-pulse delay-350 shadow-[0_0_45px_16px_rgba(251,113,133,0.44)]"></div>
+      <div className="absolute bottom-40 right-20 w-34 h-34 bg-teal-400 rounded-full opacity-15 blur-2xl animate-pulse delay-1350 shadow-[0_0_72px_27px_rgba(45,212,191,0.3)]"></div>
       
       {/* Fill more white spaces with glows */}
-      <div className="absolute top-4 left-4 w-12 h-12 bg-indigo-400 rounded-full opacity-28 blur-lg animate-morph-butterfly shadow-[0_0_42px_15px_rgba(129,140,248,0.4)]"></div>
-      <div className="absolute bottom-4 right-4 w-16 h-16 bg-amber-400 rounded-full opacity-25 blur-lg animate-morph-diamond shadow-[0_0_48px_18px_rgba(251,191,36,0.38)]"></div>
-      <div className="absolute top-24 left-1/5 w-20 h-20 bg-violet-400 rounded-full opacity-30 blur-xl animate-morph-heart shadow-[0_0_52px_19px_rgba(167,139,250,0.42)]"></div>
-      <div className="absolute bottom-24 right-1/5 w-22 h-22 bg-fuchsia-400 rounded-full opacity-22 blur-lg animate-morph-butterfly shadow-[0_0_55px_20px_rgba(232,121,249,0.36)]"></div>
-      <div className="absolute top-36 right-1/4 w-18 h-18 bg-sky-400 rounded-full opacity-35 blur-lg animate-morph-diamond shadow-[0_0_50px_18px_rgba(56,189,248,0.46)]"></div>
-      <div className="absolute bottom-36 left-1/5 w-26 h-26 bg-lime-300 rounded-full opacity-20 blur-xl animate-morph-heart shadow-[0_0_58px_21px_rgba(190,242,100,0.34)]"></div>
-      <div className="absolute top-28 left-2/3 w-14 h-14 bg-pink-300 rounded-full opacity-33 blur-lg animate-morph-butterfly shadow-[0_0_45px_16px_rgba(249,168,212,0.44)]"></div>
-      <div className="absolute bottom-28 right-2/3 w-24 h-24 bg-cyan-300 rounded-full opacity-18 blur-xl animate-morph-diamond shadow-[0_0_60px_22px_rgba(103,232,249,0.32)]"></div>
+      <div className="absolute top-4 left-4 w-12 h-12 bg-indigo-400 rounded-full opacity-28 blur-lg animate-pulse delay-200 shadow-[0_0_42px_15px_rgba(129,140,248,0.4)]"></div>
+      <div className="absolute bottom-4 right-4 w-16 h-16 bg-amber-400 rounded-full opacity-25 blur-lg animate-pulse delay-1500 shadow-[0_0_48px_18px_rgba(251,191,36,0.38)]"></div>
+      <div className="absolute top-24 left-1/5 w-20 h-20 bg-violet-400 rounded-full opacity-30 blur-xl animate-pulse delay-750 shadow-[0_0_52px_19px_rgba(167,139,250,0.42)]"></div>
+      <div className="absolute bottom-24 right-1/5 w-22 h-22 bg-fuchsia-400 rounded-full opacity-22 blur-lg animate-pulse delay-1050 shadow-[0_0_55px_20px_rgba(232,121,249,0.36)]"></div>
+      <div className="absolute top-36 right-1/4 w-18 h-18 bg-sky-400 rounded-full opacity-35 blur-lg animate-pulse delay-450 shadow-[0_0_50px_18px_rgba(56,189,248,0.46)]"></div>
+      <div className="absolute bottom-36 left-1/5 w-26 h-26 bg-lime-300 rounded-full opacity-20 blur-xl animate-pulse delay-1250 shadow-[0_0_58px_21px_rgba(190,242,100,0.34)]"></div>
+      <div className="absolute top-28 left-2/3 w-14 h-14 bg-pink-300 rounded-full opacity-33 blur-lg animate-pulse delay-650 shadow-[0_0_45px_16px_rgba(249,168,212,0.44)]"></div>
+      <div className="absolute bottom-28 right-2/3 w-24 h-24 bg-cyan-300 rounded-full opacity-18 blur-xl animate-pulse delay-950 shadow-[0_0_60px_22px_rgba(103,232,249,0.32)]"></div>
       
       <div className="container px-4 relative z-10">
         <div className="text-center mb-12">
