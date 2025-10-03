@@ -2,10 +2,18 @@ import { Search, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import backgroundImage from "@/assets/campustaan-background.jpg";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const HeroSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="relative overflow-hidden min-h-[600px] flex items-center">
+    <section 
+      ref={ref}
+      className={`relative overflow-hidden min-h-[600px] flex items-center transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

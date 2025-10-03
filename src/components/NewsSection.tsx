@@ -2,8 +2,10 @@ import { Clock, Heart, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const NewsSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const newsItems = [
     {
       id: 1,
@@ -38,7 +40,12 @@ const NewsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-background relative overflow-hidden">
+    <section 
+      ref={ref}
+      className={`py-16 bg-background relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
       {/* Floating orbs with glows */}
       <div className="absolute top-20 right-16 w-24 h-24 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse delay-400 shadow-[0_0_60px_22px_rgba(249,115,22,0.35)]"></div>
       <div className="absolute bottom-32 left-20 w-32 h-32 bg-gradient-wave rounded-full opacity-15 blur-2xl animate-pulse delay-1100 shadow-[0_0_70px_26px_rgba(168,85,247,0.3)]"></div>

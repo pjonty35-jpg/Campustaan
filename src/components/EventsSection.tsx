@@ -2,8 +2,10 @@ import { Calendar, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const EventsSection = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const events = [
     {
       id: 1,
@@ -41,7 +43,12 @@ const EventsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/30 relative overflow-hidden">
+    <section 
+      ref={ref}
+      className={`py-16 bg-muted/30 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
       {/* Floating orbs with glows */}
       <div className="absolute top-16 left-12 w-28 h-28 bg-gradient-wave rounded-full opacity-25 blur-xl animate-pulse delay-600 shadow-[0_0_62px_23px_rgba(168,85,247,0.38)]"></div>
       <div className="absolute bottom-20 right-24 w-36 h-36 bg-gradient-primary rounded-full opacity-20 blur-2xl animate-pulse delay-1300 shadow-[0_0_75px_28px_rgba(249,115,22,0.34)]"></div>
