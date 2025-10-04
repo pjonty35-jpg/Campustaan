@@ -32,30 +32,17 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Home
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Events
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              News
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Alert
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Talent
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              About
-            </a>
-          </nav>
-
           {/* User Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center space-x-6">
+              <a href="#" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+                Home
+              </a>
+              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                About
+              </a>
+            </nav>
             <Button variant="ghost" size="sm" className="relative">
               <Bell className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></span>

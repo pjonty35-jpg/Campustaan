@@ -2,14 +2,14 @@ const SubHeader = () => {
   const categories = ['Announcement', 'Buzz', 'Talent', 'Shop', 'Account'];
 
   return (
-    <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-center space-x-8 h-14">
+    <div className="relative border-b border-primary/10 bg-background/20 backdrop-blur-sm supports-[backdrop-filter]:bg-background/15">
+      <div className="mx-auto px-4 max-w-3xl">
+        <nav className="flex items-center justify-center gap-1 h-12">
           {categories.map((category) => (
             <a
               key={category}
               href={`#${category.toLowerCase()}`}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="px-6 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 hover:scale-105"
             >
               {category}
             </a>
