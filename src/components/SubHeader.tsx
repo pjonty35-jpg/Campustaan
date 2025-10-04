@@ -1,5 +1,5 @@
 const SubHeader = () => {
-  const categories = ['Announcement', 'Buzz', 'Talent', 'Shop', 'Account', 'Find me'];
+  const categories = ['Announcement', 'Buzz', 'Talent', 'Shop', 'Find me', 'Account'];
 
   return (
     <div className="relative border-b border-primary/10 bg-background/20 backdrop-blur-sm supports-[backdrop-filter]:bg-background/15">
