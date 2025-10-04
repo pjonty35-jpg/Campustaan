@@ -7,7 +7,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { Sparkles, School } from "lucide-react";
+import { School } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
@@ -148,17 +148,15 @@ const LoginDialog = ({ open, onOpenChange }: LoginDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md bg-gradient-card border-2 border-primary/20 shadow-brand">
+      <DialogContent className="sm:max-w-md bg-background/80 backdrop-blur-md border-2 border-primary/20 shadow-brand">
         <div className="flex flex-col items-center space-y-4 py-4">
-          {/* Header with cute icon */}
+          {/* Header */}
           <div className="flex items-center space-x-2">
-            <Sparkles className="h-6 w-6 text-primary animate-pulse" />
             <h2 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               {step === "contact" && "Welcome!"}
               {step === "otp" && "Verify Code"}
               {step === "campus" && "Choose Campus"}
             </h2>
-            <Sparkles className="h-6 w-6 text-primary animate-pulse" />
           </div>
 
           {/* Contact Step */}
