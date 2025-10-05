@@ -1,6 +1,6 @@
 import campustaanBg from "@/assets/campustaan-background.jpg";
 
-const SubHeader = () => {
+const CategoriesSection = () => {
   const categories = ['Announcement', 'Buzz', 'Talent', 'Shop', 'Find me', 'Account'];
   
   const colors = [
@@ -46,4 +46,4 @@ const SubHeader = () => {
   );
 };
 
-export default SubHeader;
+export default CategoriesSection;
