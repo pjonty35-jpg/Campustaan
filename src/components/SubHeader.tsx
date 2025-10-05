@@ -22,13 +22,13 @@ const SubHeader = () => {
         backgroundAttachment: 'fixed',
       }}
     >
-      <div className="mx-auto px-4 max-w-4xl">
-        <nav className="flex items-center justify-center gap-4 h-16 py-2 flex-wrap">
+      <div className="mx-auto px-2 sm:px-4 max-w-4xl">
+        <nav className="flex items-center justify-center gap-2 sm:gap-4 min-h-16 py-3 flex-wrap">
           {categories.map((category, index) => (
             <a
               key={category}
               href={`#${category.toLowerCase()}`}
-              className={`group relative px-5 py-2.5 text-sm font-bold text-white rounded-2xl transition-all duration-300 
+              className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
                 hover:scale-105 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] 
                 border-2 backdrop-blur-md bg-white/10
                 active:scale-95 active:shadow-[0_0_25px_rgba(255,255,255,0.4)] active:bg-white/20
