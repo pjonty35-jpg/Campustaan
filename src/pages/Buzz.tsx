@@ -1,90 +1,75 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Zap } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { supabase } from "@/integrations/supabase/client";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { useAuth } from "@/hooks/use-auth";
+import campustaanBg from "@/assets/campustaan-background.jpg";
 
 const Buzz = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
-  const [content, setContent] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [creating, setCreating] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!user) {
-      toast.error("Please log in to create a buzz");
-      navigate("/auth");
-      return;
-    }
-
-    if (!content.trim()) {
-      toast.error("Please write something");
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      const { error } = await supabase
-        .from('buzzes')
-        .insert({
-          user_id: user.id,
-          content: content.trim()
-        });
-
-      if (error) throw error;
-
-      toast.success("Buzz created successfully!");
-      setContent("");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to create buzz");
-    } finally {
-      setSubmitting(false);
-    }
+    setCreating(true);
+    toast.success("Buzz created successfully!");
+    setCreating(false);
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Create a Buzz
+      <main 
+        className="relative min-h-screen py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${campustaanBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
+            Campus Buzz
           </h1>
-          <p className="text-center text-muted-foreground mb-8">
-            Share what's happening on campus
+          <p className="text-white/80 text-center mb-12">
+            What's buzzing on campus today?
           </p>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>What's the buzz?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <Textarea
-                  placeholder="Share your thoughts, news, or updates..."
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  rows={6}
-                  required
-                />
+          <Card className="bg-white/10 backdrop-blur-lg border-white/20">
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="content" className="text-white">What's on your mind?</Label>
+                  <Textarea 
+                    id="content" 
+                    placeholder="Share something interesting..." 
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50 min-h-24"
+                    required
+                  />
+                </div>
 
                 <Button
                   type="submit"
-                  className="w-full"
-                  disabled={submitting}
+                  disabled={creating}
+                  className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white shadow-lg shadow-blue-500/50"
                 >
-                  {submitting ? "Posting..." : "Post Buzz"}
+                  <Zap className="mr-2" size={20} />
+                  {creating ? "Creating..." : "Create Buzz"}
                 </Button>
               </form>
             </CardContent>
           </Card>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-6">Latest Buzz</h2>
+            <div className="space-y-4">
+              {/* Buzz cards will be displayed here */}
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

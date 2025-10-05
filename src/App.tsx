@@ -8,8 +8,8 @@ import NotFound from "./pages/NotFound";
 import Talent from "./pages/Talent";
 import Announcement from "./pages/Announcement";
 import Buzz from "./pages/Buzz";
-import Shop from "./pages/Shop";
 import FindMe from "./pages/FindMe";
+import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
 import Account from "./pages/Account";
 

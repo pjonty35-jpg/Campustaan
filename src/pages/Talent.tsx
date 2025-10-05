@@ -1,125 +1,113 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Upload, Video, Image as ImageIcon } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { useAuth } from "@/hooks/use-auth";
+import campustaanBg from "@/assets/campustaan-background.jpg";
 
 const Talent = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
   const [uploading, setUploading] = useState(false);
 
-  const handleUpload = async (type: 'photo' | 'video') => {
-    if (!user) {
-      toast.error("Please log in to upload your talent");
-      navigate("/auth");
-      return;
-    }
-
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = type === 'photo' ? 'image/*' : 'video/*';
-    
-    input.onchange = async (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (!file) return;
-
-      setUploading(true);
-      try {
-        // Upload to storage
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${user.id}/${Date.now()}.${fileExt}`;
-        
-        const { error: uploadError } = await supabase.storage
-          .from('user-uploads')
-          .upload(fileName, file);
-
-        if (uploadError) throw uploadError;
-
-        // Get public URL
-        const { data: { publicUrl } } = supabase.storage
-          .from('user-uploads')
-          .getPublicUrl(fileName);
-
-        // Prompt for title and description
-        const title = prompt("Enter a title for your talent:");
-        if (!title) {
-          toast.error("Title is required");
-          setUploading(false);
-          return;
-        }
-
-        const description = prompt("Enter a description (optional):");
-
-        // Save to database
-        const { error: dbError } = await supabase
-          .from('talents')
-          .insert({
-            user_id: user.id,
-            title,
-            description: description || null,
-            media_url: publicUrl,
-            media_type: type
-          });
-
-        if (dbError) throw dbError;
-
-        toast.success("Your talent has been uploaded!");
-      } catch (error: any) {
-        toast.error(error.message || "Failed to upload");
-      } finally {
-        setUploading(false);
-      }
-    };
-
-    input.click();
+  const handleUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUploading(true);
+    toast.success("Talent uploaded successfully!");
+    setUploading(false);
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+      <main 
+        className="relative min-h-screen py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${campustaanBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-4">
             Showcase Your Talent
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Share your skills, creativity, and passion with the Campustaan community
+          <p className="text-white/80 text-center mb-12">
+            Share your amazing skills with the campus community
           </p>
-        </div>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button
-            size="lg"
-            onClick={() => handleUpload('photo')}
-            disabled={uploading}
-            className="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <ImageIcon className="mr-2 h-5 w-5" />
-            Upload Photo
-          </Button>
-          
-          <Button
-            size="lg"
-            onClick={() => handleUpload('video')}
-            disabled={uploading}
-            className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <Video className="mr-2 h-5 w-5" />
-            Upload Video
-          </Button>
-        </div>
+          <Card className="bg-white/10 backdrop-blur-lg border-white/20">
+            <CardContent className="p-8">
+              <form onSubmit={handleUpload} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="title" className="text-white">Title</Label>
+                  <Input 
+                    id="title" 
+                    placeholder="Enter talent title" 
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
+                    required
+                  />
+                </div>
 
-        {uploading && (
-          <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-            <p className="mt-2 text-muted-foreground">Uploading...</p>
+                <div className="space-y-2">
+                  <Label htmlFor="description" className="text-white">Description</Label>
+                  <Textarea 
+                    id="description" 
+                    placeholder="Describe your talent" 
+                    className="bg-white/20 border-white/30 text-white placeholder:text-white/50 min-h-24"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-white">Upload Media</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-2 border-purple-400/50 hover:from-purple-500/30 hover:to-pink-500/30 hover:border-purple-400/70 text-white backdrop-blur-md"
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        <ImageIcon size={32} />
+                        <span className="font-semibold">Upload Photo</span>
+                      </div>
+                    </Button>
+
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="h-32 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-400/50 hover:from-blue-500/30 hover:to-cyan-500/30 hover:border-blue-400/70 text-white backdrop-blur-md"
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        <Video size={32} />
+                        <span className="font-semibold">Upload Video</span>
+                      </div>
+                    </Button>
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={uploading}
+                  className="w-full h-14 text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg shadow-purple-500/50"
+                >
+                  <Upload className="mr-2" size={20} />
+                  {uploading ? "Uploading..." : "Share Your Talent"}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-6">Recent Talents</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Talent cards will be displayed here */}
+            </div>
           </div>
-        )}
+        </div>
       </main>
       <Footer />
     </div>

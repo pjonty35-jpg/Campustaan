@@ -7,7 +7,7 @@ const CategoriesSection = () => {
     { name: 'Buzz', path: '/buzz' },
     { name: 'Talent', path: '/talent' },
     { name: 'Shop', path: '/shop' },
-    { name: 'Find me', path: '/find-me' },
+    { name: 'Find me', path: '/findme' },
     { name: 'Account', path: '/account' }
   ];
   
