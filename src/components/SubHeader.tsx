@@ -15,6 +15,12 @@ const SubHeader = () => {
   return (
     <div 
       className="relative border-b border-white/20 backdrop-blur-xl bg-white/5 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${campustaanBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
     >
       <div className="mx-auto px-4 max-w-4xl">
         <nav className="flex items-center justify-center gap-4 h-16 py-2 flex-wrap">
