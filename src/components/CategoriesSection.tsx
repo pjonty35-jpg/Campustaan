@@ -1,7 +1,15 @@
+import { Link } from "react-router-dom";
 import campustaanBg from "@/assets/campustaan-background.jpg";
 
 const CategoriesSection = () => {
-  const categories = ['Announcement', 'Buzz', 'Talent', 'Shop', 'Find me', 'Account'];
+  const categories = [
+    { name: 'Announcement', path: '/announcement' },
+    { name: 'Buzz', path: '/buzz' },
+    { name: 'Talent', path: '/talent' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Find me', path: '/find-me' },
+    { name: 'Account', path: '/account' }
+  ];
   
   const colors = [
     'from-pink-200/20 to-purple-200/20 border-pink-300/30 hover:from-pink-200/30 hover:to-purple-200/30 hover:border-pink-300/50 active:from-pink-300/40 active:to-purple-300/40',
@@ -25,9 +33,9 @@ const CategoriesSection = () => {
       <div className="mx-auto px-2 sm:px-4 max-w-4xl">
         <nav className="flex items-center justify-center gap-2 sm:gap-4 min-h-16 py-3 flex-wrap">
           {categories.map((category, index) => (
-            <a
-              key={category}
-              href={`#${category.toLowerCase()}`}
+            <Link
+              key={category.name}
+              to={category.path}
               className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
                 hover:scale-105 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] 
                 border-2 backdrop-blur-md bg-white/10
@@ -35,10 +43,10 @@ const CategoriesSection = () => {
                 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),0_4px_16px_0_rgba(0,0,0,0.2)]
                 bg-gradient-to-br ${colors[index % colors.length]}`}
             >
-              <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">{category}</span>
+              <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">{category.name}</span>
               <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-50" />
               <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
