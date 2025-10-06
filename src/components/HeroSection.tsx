@@ -76,7 +76,7 @@ const HeroSection = () => {
         <GraduationCap className="h-28 w-28" />
       </div>
 
-      <div className="container relative z-10 px-4 py-12">
+      <div className="container relative z-10 py-[10px] px-[30px]">
         <div className="max-w-4xl">
           {/* Category Navigation */}
           <nav className="flex items-start justify-start gap-2 sm:gap-4 flex-wrap mb-8 mx-0 my-px py-px">
