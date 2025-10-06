@@ -36,23 +36,6 @@ const HeroSection = () => {
     }}></div>
       <div className="absolute inset-0 bg-black/40"></div>
       
-      {/* Category Navigation */}
-      <div className="relative z-10 w-full pt-4 py-0">
-        <div className="mx-auto px-2 sm:px-4 max-w-4xl">
-          <nav className="flex items-center justify-center gap-2 sm:gap-4 min-h-16 py-3 flex-wrap my-[10px]">
-            {categories.map((category, index) => <Link key={category.name} to={category.path} className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
-                  hover:scale-105 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] 
-                  border-2 backdrop-blur-md bg-white/10
-                  active:scale-95 active:shadow-[0_0_25px_rgba(255,255,255,0.4)] active:bg-white/20
-                  shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),0_4px_16px_0_rgba(0,0,0,0.2)]
-                  bg-gradient-to-br ${colors[index % colors.length]}`}>
-                <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">{category.name}</span>
-                <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-50" />
-                <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>)}
-          </nav>
-        </div>
-      </div>
       
       {/* Decorative floating orbs with glow */}
       <div className="absolute top-16 left-8 w-24 h-24 bg-gradient-wave rounded-full opacity-60 blur-xl animate-pulse shadow-[0_0_60px_20px_rgba(168,85,247,0.4)]"></div>
@@ -93,14 +76,28 @@ const HeroSection = () => {
         <GraduationCap className="h-28 w-28" />
       </div>
 
-      <div className="container relative z-10 px-4 py-20">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      <div className="container relative z-10 px-4 py-12">
+        <div className="max-w-4xl">
+          {/* Category Navigation */}
+          <nav className="flex items-start justify-start gap-2 sm:gap-4 py-3 flex-wrap mb-8">
+            {categories.map((category, index) => <Link key={category.name} to={category.path} className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
+                  hover:scale-105 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] 
+                  border-2 backdrop-blur-md bg-white/10
+                  active:scale-95 active:shadow-[0_0_25px_rgba(255,255,255,0.4)] active:bg-white/20
+                  shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),0_4px_16px_0_rgba(0,0,0,0.2)]
+                  bg-gradient-to-br ${colors[index % colors.length]}`}>
+                <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">{category.name}</span>
+                <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-50" />
+                <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Link>)}
+          </nav>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight text-left">
             Connect with your{" "}
             <span className="text-yellow-200">campus community</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed text-left">
             Daily updates, events, and opportunities.
           </p>
 
