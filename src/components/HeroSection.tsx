@@ -79,7 +79,7 @@ const HeroSection = () => {
       <div className="container relative z-10 px-4 py-12">
         <div className="max-w-4xl">
           {/* Category Navigation */}
-          <nav className="flex items-start justify-start gap-2 sm:gap-4 py-3 flex-wrap mb-8">
+          <nav className="flex items-start justify-start gap-2 sm:gap-4 flex-wrap mb-8 mx-0 my-px py-px">
             {categories.map((category, index) => <Link key={category.name} to={category.path} className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
                   hover:scale-105 hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.2)] 
                   border-2 backdrop-blur-md bg-white/10
