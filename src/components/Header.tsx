@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import campustaanLogo from "@/assets/campustaan-logo.png";
-import campustaanBg from "@/assets/campustaan-background.jpg";
 import LoginDialog from "@/components/auth/LoginDialog";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -19,15 +18,8 @@ const Header = () => {
 
   return (
     <>
-      <header 
-        className="sticky top-0 z-50 w-full px-4"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${campustaanBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="container mx-auto flex h-16 items-center justify-between px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border rounded-2xl shadow-lg">
+      <header className="sticky top-0 z-50 w-full px-4">
+        <div className="container mx-auto flex h-16 items-center justify-between px-6 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border rounded-2xl shadow-lg">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
             <img 
