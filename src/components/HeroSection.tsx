@@ -37,7 +37,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/40"></div>
       
       {/* Category Navigation */}
-      <div className="relative z-10 w-full pt-4">
+      <div className="relative z-10 w-full pt-4 py-0">
         <div className="mx-auto px-2 sm:px-4 max-w-4xl">
           <nav className="flex items-center justify-center gap-2 sm:gap-4 min-h-16 py-3 flex-wrap my-[10px]">
             {categories.map((category, index) => <Link key={category.name} to={category.path} className={`group relative px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white rounded-2xl transition-all duration-300 
