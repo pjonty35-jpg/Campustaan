@@ -1,32 +1,22 @@
 import { useState } from "react";
 import { Bell, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import campustaanLogo from "@/assets/campustaan-logo.png";
 import LoginDialog from "@/components/auth/LoginDialog";
 import { useAuth } from "@/hooks/use-auth";
-
 const Header = () => {
   const [loginOpen, setLoginOpen] = useState(false);
-  const { user, signOut } = useAuth();
-
-  return (
-    <>
-      <header className="sticky top-0 z-50 w-full px-4">
-        <div className="container mx-auto flex h-16 items-center justify-between px-6 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border rounded-2xl shadow-lg">
+  const {
+    user,
+    signOut
+  } = useAuth();
+  return <>
+      <header className="sticky top-0 z-50 w-full my-0 px-[40px] py-0 mx-0">
+        <div className="container mx-auto flex h-16 items-center justify-between px-6 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border rounded-2xl shadow-lg my-0">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
-            <img 
-              src={campustaanLogo} 
-              alt="Campustaan Logo" 
-              className="h-10 w-auto"
-            />
+            <img src={campustaanLogo} alt="Campustaan Logo" className="h-10 w-auto" />
             <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Campustaan
             </span>
@@ -48,8 +38,7 @@ const Header = () => {
               <span className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></span>
             </Button>
             
-            {user ? (
-              <DropdownMenu>
+            {user ? <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="relative">
                     <User className="h-5 w-5" />
@@ -66,23 +55,14 @@ const Header = () => {
                     Sign Out
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => setLoginOpen(true)}
-              >
+              </DropdownMenu> : <Button variant="ghost" size="sm" onClick={() => setLoginOpen(true)}>
                 <User className="h-5 w-5" />
-              </Button>
-            )}
+              </Button>}
           </div>
         </div>
       </header>
       
       <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
-    </>
-  );
+    </>;
 };
-
 export default Header;
