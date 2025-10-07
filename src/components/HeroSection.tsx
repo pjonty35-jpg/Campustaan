@@ -31,7 +31,7 @@ const HeroSection = () => {
   const colors = ['from-pink-200/20 to-purple-200/20 border-pink-300/30 hover:from-pink-200/30 hover:to-purple-200/30 hover:border-pink-300/50 active:from-pink-300/40 active:to-purple-300/40', 'from-blue-200/20 to-cyan-200/20 border-blue-300/30 hover:from-blue-200/30 hover:to-cyan-200/30 hover:border-blue-300/50 active:from-blue-300/40 active:to-cyan-300/40', 'from-orange-200/20 to-red-200/20 border-orange-300/30 hover:from-orange-200/30 hover:to-red-200/30 hover:border-orange-300/50 active:from-orange-300/40 active:to-red-300/40', 'from-green-200/20 to-emerald-200/20 border-green-300/30 hover:from-green-200/30 hover:to-emerald-200/30 hover:border-green-300/50 active:from-green-300/40 active:to-emerald-300/40', 'from-violet-200/20 to-fuchsia-200/20 border-violet-300/30 hover:from-violet-200/30 hover:to-fuchsia-200/30 hover:border-violet-300/50 active:from-violet-300/40 active:to-fuchsia-300/40', 'from-amber-200/20 to-yellow-200/20 border-amber-300/30 hover:from-amber-200/30 hover:to-yellow-200/30 hover:border-amber-300/50 active:from-amber-300/40 active:to-yellow-300/40'];
   return <section ref={ref} className={`relative overflow-hidden min-h-[600px] flex items-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
       {/* Background image with overlay - extends to cover header */}
-      <div className="absolute inset-0 -top-40 bg-cover bg-center bg-no-repeat" style={{
+      <div className="absolute inset-0 -top-24 bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${backgroundImage})`
     }}></div>
       <div className="absolute inset-0 -top-40 bg-black/40"></div>
