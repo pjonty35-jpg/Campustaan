@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Search, MapPin, Filter, X } from "lucide-react";
+import { Search, MapPin, Filter, X, Upload, Image as ImageIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,6 +24,7 @@ type LostFoundItem = {
   location: string | null;
   created_at: string;
   status: string;
+  image_url: string | null;
 };
 
 const FindMe = () => {
@@ -39,6 +40,9 @@ const FindMe = () => {
   // Form states
   const [lostForm, setLostForm] = useState({ title: "", description: "", location: "" });
   const [foundForm, setFoundForm] = useState({ title: "", description: "", location: "" });
+  const [lostImage, setLostImage] = useState<File | null>(null);
+  const [foundImage, setFoundImage] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     fetchItems();
@@ -62,6 +66,24 @@ const FindMe = () => {
     }
   };
 
+  const uploadImage = async (file: File) => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${user?.id}/${fileName}`;
+
+    const { error: uploadError, data } = await supabase.storage
+      .from('user-uploads')
+      .upload(filePath, file);
+
+    if (uploadError) throw uploadError;
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('user-uploads')
+      .getPublicUrl(filePath);
+
+    return publicUrl;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -72,9 +94,18 @@ const FindMe = () => {
     }
 
     setCreating(true);
+    setUploading(true);
     const formData = activeTab === "lost" ? lostForm : foundForm;
+    const imageFile = activeTab === "lost" ? lostImage : foundImage;
 
     try {
+      let imageUrl = null;
+      
+      // Upload image if provided
+      if (imageFile) {
+        imageUrl = await uploadImage(imageFile);
+      }
+
       const { error } = await supabase
         .from("lost_found")
         .insert([
@@ -84,7 +115,8 @@ const FindMe = () => {
             location: formData.location || null,
             type: activeTab,
             user_id: user.id,
-            status: "active"
+            status: "active",
+            image_url: imageUrl
           }
         ]);
 
@@ -95,8 +127,10 @@ const FindMe = () => {
       // Reset form
       if (activeTab === "lost") {
         setLostForm({ title: "", description: "", location: "" });
+        setLostImage(null);
       } else {
         setFoundForm({ title: "", description: "", location: "" });
+        setFoundImage(null);
       }
       
       // Refresh items
@@ -106,6 +140,7 @@ const FindMe = () => {
       toast.error("Failed to post item");
     } finally {
       setCreating(false);
+      setUploading(false);
     }
   };
 
@@ -181,13 +216,32 @@ const FindMe = () => {
                       />
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="lost-image" className="text-white">Upload Image (Optional)</Label>
+                      <div className="relative">
+                        <Input
+                          id="lost-image"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setLostImage(e.target.files?.[0] || null)}
+                          className="bg-white/20 border-white/30 text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-600 file:text-white hover:file:bg-violet-700"
+                        />
+                        {lostImage && (
+                          <div className="mt-2 flex items-center gap-2 text-white/80 text-sm">
+                            <ImageIcon size={16} />
+                            <span>{lostImage.name}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
                     <Button
                       type="submit"
-                      disabled={creating}
+                      disabled={creating || uploading}
                       className="w-full h-14 text-lg font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white shadow-lg shadow-violet-500/50"
                     >
                       <Search className="mr-2" size={20} />
-                      {creating ? "Posting..." : "Post Lost Item"}
+                      {uploading ? "Uploading..." : creating ? "Posting..." : "Post Lost Item"}
                     </Button>
                   </form>
                 </TabsContent>
@@ -229,13 +283,32 @@ const FindMe = () => {
                       />
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="found-image" className="text-white">Upload Image (Optional)</Label>
+                      <div className="relative">
+                        <Input
+                          id="found-image"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setFoundImage(e.target.files?.[0] || null)}
+                          className="bg-white/20 border-white/30 text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-600 file:text-white hover:file:bg-green-700"
+                        />
+                        {foundImage && (
+                          <div className="mt-2 flex items-center gap-2 text-white/80 text-sm">
+                            <ImageIcon size={16} />
+                            <span>{foundImage.name}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
                     <Button
                       type="submit"
-                      disabled={creating}
+                      disabled={creating || uploading}
                       className="w-full h-14 text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg shadow-green-500/50"
                     >
                       <MapPin className="mr-2" size={20} />
-                      {creating ? "Posting..." : "Post Found Item"}
+                      {uploading ? "Uploading..." : creating ? "Posting..." : "Post Found Item"}
                     </Button>
                   </form>
                 </TabsContent>
@@ -245,17 +318,15 @@ const FindMe = () => {
 
           <div className="mt-12">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-              <h2 className="text-2xl font-bold text-white">Recent Posts</h2>
-              
-              <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <Input
                   placeholder="Search items..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-white/20 border-white/30 text-white placeholder:text-white/50 w-full sm:w-64"
+                  className="bg-white/20 border-white/30 text-white placeholder:text-white/50 flex-1"
                 />
                 
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <Button
                     variant={filterType === "all" ? "default" : "outline"}
                     onClick={() => setFilterType("all")}
@@ -302,8 +373,17 @@ const FindMe = () => {
                 {filteredItems.map((item) => (
                   <Card 
                     key={item.id} 
-                    className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105"
+                    className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 overflow-hidden"
                   >
+                    {item.image_url && (
+                      <div className="w-full h-48 overflow-hidden">
+                        <img 
+                          src={item.image_url} 
+                          alt={item.title}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                     <CardContent className="p-6">
                       <div className="flex justify-between items-start mb-3">
                         <h3 className="text-lg font-bold text-white">{item.title}</h3>
