@@ -34,7 +34,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 -top-24 bg-cover bg-center bg-no-repeat" style={{
       backgroundImage: `url(${backgroundImage})`
     }}></div>
-      <div className="absolute inset-0 -top-24 bg-black/40"></div>
+      <div className="absolute inset-0 -top-40 bg-black/40"></div>
       
       
       {/* Decorative floating orbs with glow */}
