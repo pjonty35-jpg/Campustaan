@@ -1,24 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Megaphone } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Megaphone } from "lucide-react";
 import { toast } from "sonner";
 import campustaanBg from "@/assets/campustaan-background.jpg";
+import { useAuth } from "@/hooks/use-auth";
+import { supabase } from "@/integrations/supabase/client";
 
 const Announcement = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [creating, setCreating] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) return;
+    
     setCreating(true);
-    toast.success("Announcement created successfully!");
-    setCreating(false);
+    try {
+      const { error } = await supabase.from("announcements").insert([{
+        title,
+        content,
+        user_id: user.id,
+      }]);
+
+      if (error) throw error;
+      
+      toast.success("Announcement created successfully!");
+      setTitle("");
+      setContent("");
+    } catch (error) {
+      console.error("Error creating announcement:", error);
+      toast.error("Failed to create announcement");
+    } finally {
+      setCreating(false);
+    }
   };
+
+  if (!user) return null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,11 +77,13 @@ const Announcement = () => {
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="title" className="text-white">Announcement Title</Label>
+                  <Label htmlFor="title" className="text-white">Title</Label>
                   <Input 
                     id="title" 
-                    placeholder="Enter announcement title" 
+                    placeholder="Announcement title" 
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     required
                   />
                 </div>
@@ -57,8 +92,10 @@ const Announcement = () => {
                   <Label htmlFor="content" className="text-white">Content</Label>
                   <Textarea 
                     id="content" 
-                    placeholder="Write your announcement details..." 
+                    placeholder="What would you like to announce?" 
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50 min-h-32"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     required
                   />
                 </div>

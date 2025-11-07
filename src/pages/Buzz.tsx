@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,16 +9,45 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import campustaanBg from "@/assets/campustaan-background.jpg";
+import { useAuth } from "@/hooks/use-auth";
+import { supabase } from "@/integrations/supabase/client";
 
 const Buzz = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [creating, setCreating] = useState(false);
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) return;
+    
     setCreating(true);
-    toast.success("Buzz created successfully!");
-    setCreating(false);
+    try {
+      const { error } = await supabase.from("buzzes").insert([{
+        content,
+        user_id: user.id,
+      }]);
+
+      if (error) throw error;
+      
+      toast.success("Buzz created successfully!");
+      setContent("");
+    } catch (error) {
+      console.error("Error creating buzz:", error);
+      toast.error("Failed to create buzz");
+    } finally {
+      setCreating(false);
+    }
   };
+
+  if (!user) return null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,6 +78,8 @@ const Buzz = () => {
                     id="content" 
                     placeholder="Share something interesting..." 
                     className="bg-white/20 border-white/30 text-white placeholder:text-white/50 min-h-24"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     required
                   />
                 </div>

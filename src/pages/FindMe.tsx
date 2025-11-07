@@ -34,6 +34,7 @@ const FindMe = () => {
   const [activeTab, setActiveTab] = useState("lost");
   const [items, setItems] = useState<LostFoundItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [imageUrls, setImageUrls] = useState<Record<string, string>>({});
   const [filterType, setFilterType] = useState<"all" | "lost" | "found">("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -58,6 +59,20 @@ const FindMe = () => {
 
       if (error) throw error;
       setItems(data || []);
+      
+      // Get signed URLs for all images
+      const urls: Record<string, string> = {};
+      for (const item of data || []) {
+        if (item.image_url) {
+          const { data: signedUrl } = await supabase.storage
+            .from('user-uploads')
+            .createSignedUrl(item.image_url, 3600);
+          if (signedUrl) {
+            urls[item.id] = signedUrl.signedUrl;
+          }
+        }
+      }
+      setImageUrls(urls);
     } catch (error) {
       console.error("Error fetching items:", error);
       toast.error("Failed to load items");
@@ -66,22 +81,20 @@ const FindMe = () => {
     }
   };
 
-  const uploadImage = async (file: File) => {
+  const uploadImage = async (file: File): Promise<string> => {
     const fileExt = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
-    const filePath = `${user?.id}/${fileName}`;
+    const fileName = `${crypto.randomUUID()}.${fileExt}`;
+    const filePath = `${fileName}`;
 
-    const { error: uploadError, data } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from('user-uploads')
       .upload(filePath, file);
 
-    if (uploadError) throw uploadError;
+    if (uploadError) {
+      throw uploadError;
+    }
 
-    const { data: { publicUrl } } = supabase.storage
-      .from('user-uploads')
-      .getPublicUrl(filePath);
-
-    return publicUrl;
+    return filePath;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -375,15 +388,15 @@ const FindMe = () => {
                     key={item.id} 
                     className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 overflow-hidden"
                   >
-                    {item.image_url && (
-                      <div className="w-full h-48 overflow-hidden">
-                        <img 
-                          src={item.image_url} 
-                          alt={item.title}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                    )}
+                  {item.image_url && imageUrls[item.id] && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <img 
+                        src={imageUrls[item.id]} 
+                        alt={item.title}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                     <CardContent className="p-6">
                       <div className="flex justify-between items-start mb-3">
                         <h3 className="text-lg font-bold text-white">{item.title}</h3>
